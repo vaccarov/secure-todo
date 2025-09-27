@@ -1,50 +1,114 @@
-# Welcome to your Expo app 👋
+# Secure TODO App
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+### List of features
 
-## Get started
+*   **User Authentication:** Secure login using device biometrics or passcode. If nothing is defined, it redirects to the correct setting page.
+*   **Native modules:** For demo purposes, I've added a button on login screen to open android settings from a native module in addition to the login button
+*   **TODO Management:** Add, toggle completion status, edit, and delete TODO items.
+*   **Persistence:** TODOs are saved locally on the device using AsyncStorage.
+*   **Intuitive UI:** Clean and responsive user interface.
+*   **Constant everything:** Centralized values are stored in constant file (localstorage keys).
+*   **Tests:** Implemented a list of test for adding, editing, toggling, deleting.
 
-1. Install dependencies
+### What is not implemented
 
-   ```bash
-   npm install
-   ```
+* iOS device testing. I don't have an iPhone, so I only can use an emulator. For demo purposes, I only implemented Android native module.
+* State management library. I've used react context instead.
+* Translation instead of using raw strings
+* Use a centralised css file for colors, fonts, shared values...
+* Real database storage instead of local storage
+* Optimisation of android folder. I uploaded the default keystore and settings for convenience.
 
-2. Start the app
+## Description
 
-   ```bash
-   npx expo start
-   ```
+A secure mobile TODO application built with React Native and Expo. This application allows users to manage their daily tasks with an added layer of security through local authentication (biometrics or passcode).
 
-In the output, you'll find options to open the app in a
+## Technologies Used
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+*   **React Native:** For building native mobile applications using JavaScript and React.
+*   **Expo:** A framework and platform for universal React applications.
+*   **TypeScript:** For type-safe JavaScript development.
+*   **`expo-router`:** For file-based routing.
+*   **`@react-native-async-storage/async-storage`:** For local data persistence.
+*   **`expo-local-authentication`:** For device-based authentication (biometrics/passcode).
+*   **`@tabler/icons-react-native`:** For vector icons.
+*   **`react-native-svg`:** For SVG support.
+*   **`react-native-safe-area-context`:** For handling safe area insets.
+*   **`react-native-screens`:** For native navigation primitives.
+*   **`expo-linking`:** To handle deep linking and URLs.
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+## Installation
 
-## Get a fresh project
+To set up and run the project locally, follow these steps:
 
-When you're ready, run:
+### Prerequisites
+
+*   Node.js (LTS version recommended)
+*   npm or Yarn
+*   Expo CLI (`npm install -g expo-cli` or `yarn global add expo-cli`)
+*   A mobile device or emulator/simulator for iOS or Android.
+
+### Steps
+
+1.  **Clone the repository:**
+    ```bash
+    git clone https://github.com/your-username/secure-todo.git
+    cd secure-todo
+    ```
+
+2.  **Install dependencies:**
+    ```bash
+    npm install
+    # or
+    yarn install
+    ```
+
+3.  **Install iOS pods (if developing for iOS):**
+    ```bash
+    npx pod-install
+    ```
+
+4.  **Start the Expo development server:**
+    ```bash
+    npm start
+    # or
+    yarn start
+    ```
+
+5.  **Run on your device/emulator:**
+    *   Scan the QR code displayed in your terminal or browser with the Expo Go app on your mobile device.
+    *   Alternatively, press `i` for iOS simulator or `a` for Android emulator in the terminal.
+
+## Available Scripts
+
+In the project directory, you can run the following commands:
+
+*   `npm start`: Runs the app in development mode with Expo.
+*   `npm run android`: Deploys the app to a connected Android device or emulator.
+*   `npm run ios`: Deploys the app to the iOS simulator.
+*   `npm run web`: Runs the app in a web browser.
+*   `npm test`: Runs the test suite with Jest.
+
+## Usage
+
+1.  **Login:** On first launch, you will be prompted to set up or use your device's local authentication (biometrics or passcode) to access the TODO list.
+2.  **Add TODOs:** Use the input field at the bottom to add new tasks.
+3.  **Toggle Completion:** Tap on a TODO item to mark it as complete or incomplete.
+4.  **Edit TODOs:** Tap the edit icon next to a TODO item. The item's text will appear in the input field at the bottom, allowing you to modify it. Press the checkmark to save changes.
+5.  **Delete TODOs:** Tap the delete icon next to a TODO item to remove it.
+6.  **Logout:** Use the logout button in the header to secure your TODO list again.
+
+## Testing
+
+This project uses Jest for testing. The following libraries are used to facilitate testing:
+
+*   **`jest-expo`**: A preset for Jest that configures it for testing Expo projects.
+*   **`@testing-library/react-native`**: Provides utilities to test React Native components in a way that resembles how users interact with them.
+
+To run the tests, execute the following command:
 
 ```bash
-npm run reset-project
+npm test
+# or
+yarn test
 ```
-
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
-
-## Learn more
-
-To learn more about developing your project with Expo, look at the following resources:
-
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
-
-## Join the community
-
-Join our community of developers creating universal apps.
-
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
