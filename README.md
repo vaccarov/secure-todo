@@ -19,6 +19,12 @@
 * Real database storage instead of local storage
 * Optimisation of android folder. I uploaded the default keystore and settings for convenience.
 
+# Demo
+
+**Note:** ```adb shell screenrecord``` seems to skip a part of the recording when I entered the password. It is a video glitch, the app doesn't have this issue.
+
+![Demo](assets/demo.gif)
+
 ## Description
 
 A secure mobile TODO application built with React Native and Expo. This application allows users to manage their daily tasks with an added layer of security through local authentication (biometrics or passcode).
@@ -68,11 +74,9 @@ To set up and run the project locally, follow these steps:
     npx pod-install
     ```
 
-4.  **Start the Expo development server:**
+4.  **Start the Android build:**
     ```bash
-    npm start
-    # or
-    yarn start
+    npx expo run:android
     ```
 
 5.  **Run on your device/emulator:**
