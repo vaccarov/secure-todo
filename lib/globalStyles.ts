@@ -1,4 +1,3 @@
-
 import { StyleSheet } from 'react-native';
 
 export const globalStyles = StyleSheet.create({
@@ -7,9 +6,9 @@ export const globalStyles = StyleSheet.create({
     borderRadius: 10,
     padding: 10,
     alignItems: 'center',
-    justifyContent: 'center',
+    justifyContent: 'center'
   },
   disabledButton: {
-    backgroundColor: '#cccccc',
-  },
+    backgroundColor: '#cccccc'
+  }
 });

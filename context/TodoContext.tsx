@@ -1,4 +1,3 @@
-
 import { TODO_STORAGE_KEY } from '@/lib/constants';
 import { Todo, TodoContextType } from '@/lib/types';
 import AsyncStorage from '@react-native-async-storage/async-storage';
@@ -48,7 +47,7 @@ export const TodoProvider: React.FC<TodoProviderProps> = ({ children }: TodoProv
     const newTodo: Todo = {
       id: Date.now().toString(),
       text,
-      completed: false,
+      completed: false
     };
     setTodos([...todos, newTodo]);
   };

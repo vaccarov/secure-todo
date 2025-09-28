@@ -1,35 +1,49 @@
-
 import TodoItem from '@/app/components/TodoItem';
 import { TodoContext } from '@/context/TodoContext';
 import { globalStyles } from '@/lib/globalStyles';
 import { Todo, TodoContextType } from '@/lib/types';
 import { IconCheck, IconPlus } from '@tabler/icons-react-native';
 import React, { useContext, useEffect, useRef, useState } from 'react';
-import { FlatList, Keyboard, KeyboardAvoidingView, KeyboardAvoidingViewProps, Platform, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
+import {
+  FlatList,
+  Keyboard,
+  KeyboardAvoidingView,
+  KeyboardAvoidingViewProps,
+  Platform,
+  StyleSheet,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  View
+} from 'react-native';
 
 // useBehavior is a workaround to fix a known bug with KeyboardAvoidingView: https://github.com/facebook/react-native/issues/52596
 export function useBehavior() {
-  const defaultValue: KeyboardAvoidingViewProps['behavior'] = Platform.OS === 'ios' ? 'padding' : 'height'
-  const [behaviour, setBehaviour] = useState<KeyboardAvoidingViewProps['behavior']>(defaultValue)
+  const defaultValue: KeyboardAvoidingViewProps['behavior'] = Platform.OS === 'ios' ? 'padding' : 'height';
+  const [behaviour, setBehaviour] = useState<KeyboardAvoidingViewProps['behavior']>(defaultValue);
   useEffect(() => {
     const showListener = Keyboard.addListener('keyboardDidShow', () => {
       setBehaviour(defaultValue);
-    })
+    });
     const hideListener = Keyboard.addListener('keyboardDidHide', () => {
       setBehaviour(undefined);
-    })
+    });
     return () => {
       showListener.remove();
       hideListener.remove();
-    }
-  }, [])
-  return behaviour
+    };
+  }, [defaultValue]);
+  return behaviour;
 }
 
 export default function TodoList(): React.ReactElement {
   const context = useContext(TodoContext);
   if (!context) {
-    return <View><Text>Error: TodoContext is not available</Text></View>;
+    return (
+      <View>
+        <Text>Error: TodoContext is not available</Text>
+      </View>
+    );
   }
   const keyboardBehaviour = useBehavior();
   const inputRef: React.RefObject<TextInput | null> = useRef<TextInput>(null);
@@ -67,9 +81,7 @@ export default function TodoList(): React.ReactElement {
     >
       <FlatList
         data={todos}
-        renderItem={({ item }: { item: Todo }): React.ReactElement => (
-          <TodoItem item={item} />
-        )}
+        renderItem={({ item }: { item: Todo }): React.ReactElement => <TodoItem item={item} />}
         keyExtractor={(item: Todo): string => item.id}
         style={styles.flatList}
         keyboardShouldPersistTaps="handled"
@@ -96,10 +108,10 @@ export default function TodoList(): React.ReactElement {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    flex: 1
   },
   flatList: {
-    flex: 1,
+    flex: 1
   },
   inputContainer: {
     flexDirection: 'row',
@@ -112,6 +124,6 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     fontSize: 16,
     flex: 1,
-    paddingStart: 10,
-  },
+    paddingStart: 10
+  }
 });

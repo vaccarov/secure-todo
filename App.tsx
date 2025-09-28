@@ -1,4 +1,3 @@
-
 import { ExpoRoot } from 'expo-router';
 import { ReactElement } from 'react';
 

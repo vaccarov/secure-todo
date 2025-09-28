@@ -1,5 +1,4 @@
-
-module.exports = function(api) {
+module.exports = function (api) {
   api.cache(true);
   return {
     presets: ['babel-preset-expo'],
@@ -14,10 +13,10 @@ module.exports = function(api) {
             '@/context': './context',
             '@/lib': './lib',
             '@/types': './lib/types',
-            '@/globalStyles': './lib/globalStyles',
-          },
-        },
-      ],
-    ],
+            '@/globalStyles': './lib/globalStyles'
+          }
+        }
+      ]
+    ]
   };
 };

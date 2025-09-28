@@ -29,12 +29,15 @@ export default function TodoScreen(): React.ReactElement {
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.header}>
-        <Text style={styles.title}>Secured TODO Liste</Text>
-        {isAuthenticated && 
-          <TouchableOpacity style={globalStyles.button} onPress={handleLogout}>
+        <Text style={styles.title}>Secured TODO </Text>
+        {isAuthenticated && (
+          <TouchableOpacity
+            style={globalStyles.button}
+            onPress={handleLogout}
+          >
             <IconLogout />
           </TouchableOpacity>
-        }
+        )}
       </View>
       {isAuthenticated ? <TodoList /> : <LoginScreen />}
     </SafeAreaView>
@@ -44,7 +47,7 @@ export default function TodoScreen(): React.ReactElement {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: '#fff'
   },
   header: {
     flexDirection: 'row',
@@ -55,6 +58,6 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 24,
-    fontWeight: 'bold',
-  },
+    fontWeight: 'bold'
+  }
 });

@@ -1,4 +1,3 @@
-
 import { AuthProvider } from '@/context/AuthContext';
 import { TodoProvider } from '@/context/TodoContext';
 import { Slot } from 'expo-router';

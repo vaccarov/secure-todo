@@ -1,4 +1,3 @@
-
 import { AUTH_STORAGE_KEY } from '@/lib/constants';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { createContext, ReactNode, useEffect, useState } from 'react';

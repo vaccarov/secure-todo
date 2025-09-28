@@ -1,6 +1,3 @@
-
-
-
 import { globalStyles } from '@/lib/globalStyles';
 import { IconLogin2, IconSettings } from '@tabler/icons-react-native';
 import * as LocalAuthentication from 'expo-local-authentication';
@@ -22,7 +19,11 @@ When you hit login button:
 export default function LoginScreen(): React.ReactElement {
   const authContext = useContext(AuthContext);
   if (!authContext) {
-    return <View><Text>Error: AuthContext is not available</Text></View>;
+    return (
+      <View>
+        <Text>Error: AuthContext is not available</Text>
+      </View>
+    );
   }
   const { setIsAuthenticated } = authContext;
 
@@ -36,7 +37,7 @@ export default function LoginScreen(): React.ReactElement {
     } else {
       try {
         await Linking.sendIntent('android.app.action.SET_NEW_PASSWORD');
-      } catch (error) {
+      } catch (error: unknown) {
         Alert.alert('Error', 'Could not open lock screen settings. Please open them manually.');
       }
     }
@@ -44,21 +45,18 @@ export default function LoginScreen(): React.ReactElement {
 
   const authenticate = async (): Promise<void> => {
     const result: LocalAuthentication.LocalAuthenticationResult = await LocalAuthentication.authenticateAsync({
-      promptMessage: 'Authenticate to access your TODOs',
+      promptMessage: 'Authenticate to access your TODOs'
     });
     if (result.success) {
       setIsAuthenticated(true);
     } else {
-      Alert.alert(
-        'Authentication failed',
-        'Could not authenticate. Please try again.'
-      );
+      Alert.alert('Authentication failed', 'Could not authenticate. Please try again.');
     }
-  }
+  };
 
   const handleSecuritySetttings = async (): Promise<void> => {
     SecuritySettings.openSecuritySettings();
-  }
+  };
 
   const handleAuthentication = async (): Promise<void> => {
     const supportedAuthTypes: LocalAuthentication.SecurityLevel = await LocalAuthentication.getEnrolledLevelAsync();
@@ -66,27 +64,29 @@ export default function LoginScreen(): React.ReactElement {
       authenticate();
       return;
     }
-    Alert.alert(
-      'Authentication not set up',
-      'Please set up a passcode or biometrics in your device settings to use this feature.',
-      [
-        { text: 'Cancel', style: 'cancel' },
-        { text: 'Open Settings', onPress: openSettings },
-      ]
-    );
+    Alert.alert('Authentication not set up', 'Please set up a passcode or biometrics in your device settings to use this feature.', [
+      { text: 'Cancel', style: 'cancel' },
+      { text: 'Open Settings', onPress: openSettings }
+    ]);
   };
 
   return (
     <View style={styles.container}>
       <View style={styles.actions}>
         <Text style={styles.text}>Login to see your TODOs</Text>
-        <TouchableOpacity style={globalStyles.button} onPress={handleAuthentication}>
+        <TouchableOpacity
+          style={globalStyles.button}
+          onPress={handleAuthentication}
+        >
           <IconLogin2 />
         </TouchableOpacity>
       </View>
       <View style={styles.actions}>
         <Text style={styles.text}>Android Native Settings</Text>
-        <TouchableOpacity style={globalStyles.button} onPress={handleSecuritySetttings}>
+        <TouchableOpacity
+          style={globalStyles.button}
+          onPress={handleSecuritySetttings}
+        >
           <IconSettings />
         </TouchableOpacity>
       </View>
@@ -108,6 +108,6 @@ const styles = StyleSheet.create({
     gap: 20
   },
   text: {
-    fontSize: 18,
-  },
+    fontSize: 18
+  }
 });

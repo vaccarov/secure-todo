@@ -1,4 +1,3 @@
-
 import { act, render } from '@testing-library/react-native';
 import React from 'react';
 import { Text, View } from 'react-native';
@@ -16,11 +15,36 @@ const TestComponent: React.FC = () => {
     <View>
       <Text testID="todos">{JSON.stringify(todos)}</Text>
       <Text testID="editingTodo">{JSON.stringify(editingTodo)}</Text>
-      <Text testID="addTodo" onPress={() => addTodo('Test Todo')}>Add</Text>
-      <Text testID="toggleTodo" onPress={() => todos.length > 0 && toggleTodo(todos[0].id)}>Toggle</Text>
-      <Text testID="deleteTodo" onPress={() => todos.length > 0 && deleteTodo(todos[0].id)}>Delete</Text>
-      <Text testID="updateTodo" onPress={() => todos.length > 0 && updateTodo(todos[0].id, 'Updated Todo')}>Update</Text>
-      <Text testID="setEditingTodo" onPress={() => todos.length > 0 && setEditingTodo(todos[0])}>Set Editing</Text>
+      <Text
+        testID="addTodo"
+        onPress={() => addTodo('Test Todo')}
+      >
+        Add
+      </Text>
+      <Text
+        testID="toggleTodo"
+        onPress={() => todos.length > 0 && toggleTodo(todos[0].id)}
+      >
+        Toggle
+      </Text>
+      <Text
+        testID="deleteTodo"
+        onPress={() => todos.length > 0 && deleteTodo(todos[0].id)}
+      >
+        Delete
+      </Text>
+      <Text
+        testID="updateTodo"
+        onPress={() => todos.length > 0 && updateTodo(todos[0].id, 'Updated Todo')}
+      >
+        Update
+      </Text>
+      <Text
+        testID="setEditingTodo"
+        onPress={() => todos.length > 0 && setEditingTodo(todos[0])}
+      >
+        Set Editing
+      </Text>
     </View>
   );
 };
